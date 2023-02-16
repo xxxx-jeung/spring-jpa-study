@@ -93,9 +93,7 @@ public class QuerydslBasicTest {
   @Test
   public void resultFetch() {
     List<Member> fetch = queryFactory.selectFrom(member).fetch();
-
     Member member1 = queryFactory.selectFrom(member).fetchOne();
-
     Member member2 = queryFactory.selectFrom(member).fetchFirst();
 
     QueryResults<Member> results =
@@ -211,7 +209,7 @@ public class QuerydslBasicTest {
     // 하이버네이트 요즘 버전은 연관관계가 없는 테이블도 조인할 수 있게 업데이터 됐다.
   }
 
-  /** 세타 조인? 회원의 이름이 팀 이름과 같은 회원 조회?? 카르테시안 조인 */
+  /** 세타 조인? 회원의 이름이 팀 이름과 같은 회원 조회?? 카타시안 조인 */
   @Test
   public void theta_join() {}
 

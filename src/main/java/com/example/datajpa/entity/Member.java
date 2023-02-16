@@ -1,6 +1,7 @@
 package com.example.datajpa.entity;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"})
+@NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
 public class Member {
   @Id
   @GeneratedValue
@@ -20,6 +22,7 @@ public class Member {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "team_id")
+  //@BatchSize(size = 5)
   private Team team;
 
   public Member(String username) {
